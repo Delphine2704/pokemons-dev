@@ -1,1 +1,30 @@
-<router-outlet></router-outlet>
+
+<input #box (keyup)="onKey(box.value)">
+<p>{{ value }}</p>
+
+<input #nam (keyup.enter)="onKeyEnter(nam.value)" (blur)="onKeyEnter(nam.value)">
+<p>{{ values }}</p>
+
+<div class="row">
+    <div class="center">
+        <h1>{{title}}</h1>
+    </div>
+    <div class="container">
+        <div class="col s6 m3" *ngFor="let pokemon of pokemons">
+            <div class="card horizontal" (click)="selectPokemon(pokemon)" pkmnBorderCard="#003090">
+                <div class="card-image">
+                    <img [src]="pokemon.picture">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h5>{{ pokemon.name }}</h5>
+                        <p>{{ pokemon.hp }}</p>
+                        <p>{{ pokemon.cp }}</p>
+                        <p>{{ pokemon.types }}</p>
+                        <p><small>{{ pokemon.created | date: "dd/MM/yy" }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
